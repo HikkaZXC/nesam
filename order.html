@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <h1>Новая заявка</h1>
+            <form action="#">
+                <label for="address">Адрес:</label>
+                <input type="text" id="address" name="address" required>
+        
+                <label for="phone">Телефон:</label>
+                <input type="text" id="phone" name="phone" placeholder="+7(XXX)-XXX-XX-XX" required>
+        
+                <label for="date">Дата:</label>
+                <input type="date" id="date" name="date" required>
+        
+                <label for="time">Время:</label>
+                <input type="time" id="time" name="time" required>
+        
+                <label for="service">Вид услуги:</label>
+                <select id="service" name="service" required onchange="showOtherServiceInput(this)">
+        
+                    <option value="general">Общий клининг</option>
+                    <option value="deep">Генеральная уборка</option>
+                    <option value="post-construction">Послестроительная уборка</option>
+                    <option value="carpet">Химчистка ковров и мебели</option>
+                    <option value="other">Иная услуга</option>
+                </select>
+        
+                <div id="otherServiceInput" style="display: none;">
+                    <label for="otherService">Описание услуги:</label>
+                    <input type="text" id="otherService" name="otherService">
+                </div>
+        
+                <label for="payment">Тип оплаты:</label>
+                <select id="payment" name="payment" required>
+                    <option value="cash">Наличные</option>
+                    <option value="card">Банковская карта</option>
+                </select>
+        
+                <button type="submit">Отправить заявку</button>
+            </form>
+        
+        
+        </div>
+        
+        <div class="container">
+            <h1>История заявок</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Номер заявки</th>
+                        <th>Адрес</th>
+                        <th>Телефон</th>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Услуга</th>
+                        <th>Оплата</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>г. Москва, ул. Ленина, д. 15</td>
+                        <td>+7(987)-654-32-10</td>
+                        <td>2023-10-01</td>
+                        <td>14:00</td>
+                        <td>Генеральная уборка</td>
+                        <td>Наличные</td>
+                        <td>Выполнено</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>г. Санкт-Петербург, Невский проспект, д. 100</td>
+                        <td>+7(912)-345-67-89</td>
+                        <td>2023-10-05</td>
+                        <td>16:30</td>
+                        <td>Химчистка ковров</td>
+                        <td>Банковская карта</td>
+                        <td>В работе</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>г. Казань, ул. Пушкина, д. 25</td>
+                        <td>+7(905)-123-45-67</td>
+                        <td>2023-09-28</td>
+                        <td>10:00</td>
+                        <td>Послестроительная уборка</td>
+                        <td>Наличные</td>
+                        <td>Отменено (клиент отменил)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <script>
+            function showOtherServiceInput(select) {
+                if (select.value === 'other') {
+                    document.getElementById('otherServiceInput').style.display = 'block';
+                } else {
+                    document.getElementById('otherServiceInput').style.display = 'none';
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>
+
+
+
