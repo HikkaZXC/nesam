@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Маршрут выхода (должен быть доступен только авторизованным пользователям)
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
 Route::middleware('guest')->group(function () {
     // авторизация
     Route::get('/login', [AuthController::class, 'loginView'])->name('loginView');
