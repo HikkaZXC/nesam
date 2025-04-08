@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('/fonts/Ubuntu-Regular.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu';
+}
+
+:root {
+    --backcolor: rgba(128, 128, 128, 0.500);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 20%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--backcolor);
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    header nav ul {
+        flex-direction: row;
+    }
+}
+
+
