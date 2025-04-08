@@ -58,21 +58,26 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+            'login' => 'required',
             'password' => 'required'
         ], [
-            'email.required' => 'Поле email обязательно для заполнения',
-            'email.email' => 'Поле email должно быть действительным email адресом',
-            'email.regex' => 'Неверный формат email',
+            'login.required' => 'Поле логин обязательно для заполнения',
             'password.required' => 'Поле пароль обязательно для заполнения'
         ]);
 
-        if (Auth::attempt()) {
+        if (Auth::attempt([
+            'login' => $request->login,
+            'password' => $request->password
+        ])) {
             return redirect()->route('home');
         }
+
+        return redirect()->route('loginView')
+            ->withErrors(['login' => 'Неверный логин или пароль']);
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('home');
     }
