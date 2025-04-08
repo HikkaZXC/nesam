@@ -27,6 +27,12 @@ ul {
     list-style: none;
 }
 
+section {
+    display: flex;
+    padding: 40px 20%;
+    justify-content: center;
+}
+
 header {
     display: flex;
     flex-direction: row;
